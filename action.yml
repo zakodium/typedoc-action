@@ -1,0 +1,10 @@
+name: 'TypeDoc'
+description: 'Build documentation using TypeDoc'
+inputs:
+  entry:
+    description: 'Entry point of your API'
+    required: true
+    default: 'src/index.ts'
+runs:
+  using: 'node12'
+  main: 'index.js'
