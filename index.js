@@ -1,6 +1,5 @@
 'use strict';
 
-const { existsSync } = require('fs');
 const fs = require('fs').promises;
 const path = require('path');
 
@@ -8,19 +7,30 @@ const core = require('@actions/core');
 const { exec } = require('@actions/exec');
 
 const entry = core.getInput('entry') || 'src/index.ts';
+const name = core.getInput('name');
 
 (async () => {
+  const packageJson = await getPackageJson();
+
   const args = [
     path.join(__dirname, 'node_modules/typedoc/bin/typedoc'),
     '--ignoreCompilerErrors',
     '--out',
     'docs',
-    entry,
+    '--name',
+    name || packageJson.name,
+    '--excludeExternals',
+    '--excludePrivate',
+    '--hideGenerator',
+    '--moduleResolution',
+    'node',
   ];
 
-  if (hasTypedocConfig()) {
-    args.push('--options', 'typedoc.config.js');
+  if (entry.endsWith('.d.ts')) {
+    args.push('--mode', 'file', '--includeDeclarations');
   }
+
+  args.push(entry);
 
   await exec('node', args);
   await fs.writeFile('docs/.nojekyll', '');
@@ -28,6 +38,6 @@ const entry = core.getInput('entry') || 'src/index.ts';
   core.setFailed(error);
 });
 
-function hasTypedocConfig() {
-  return existsSync('typedoc.config.js');
+async function getPackageJson() {
+  return JSON.parse(await fs.readFile('package.json', 'utf-8'));
 }

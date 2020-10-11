@@ -5,6 +5,8 @@ inputs:
     description: 'Entry point of your API'
     required: true
     default: 'src/index.ts'
+  name:
+    description: 'Name of the package'
 runs:
   using: 'node12'
   main: 'index.js'
