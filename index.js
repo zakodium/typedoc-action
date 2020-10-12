@@ -19,15 +19,16 @@ const name = core.getInput('name');
     'docs',
     '--name',
     name || packageJson.name,
-    '--excludeExternals',
     '--excludePrivate',
     '--hideGenerator',
     '--moduleResolution',
     'node',
+    '--mode',
+    'file',
   ];
 
   if (entry.endsWith('.d.ts')) {
-    args.push('--mode', 'file', '--includeDeclarations');
+    args.push('--includeDeclarations', '--excludeExternals');
   }
 
   args.push(entry);
