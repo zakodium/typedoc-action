@@ -10,6 +10,13 @@ const { exec } = require('@actions/exec');
 const entry = core.getInput('entry') || 'src/index.ts';
 const name = core.getInput('name');
 
+const defaultTsconfig = `{
+  "compilerOptions": {
+    "lib": ["DOM", "ESNext"]
+  }
+}
+`;
+
 (async () => {
   const packageJson = await getPackageJson();
   const { hasTsConfig, tsConfigPath } = await ensureTsConfig();
@@ -45,7 +52,7 @@ async function ensureTsConfig() {
   let has = true;
   if (!exists('tsconfig.json')) {
     has = false;
-    await fs.writeFile('tsconfig.json', '{}');
+    await fs.writeFile('tsconfig.json', defaultTsconfig);
   }
   return { hasTsConfig: has, tsConfigPath: path.resolve('tsconfig.json') };
 }
