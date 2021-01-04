@@ -12,7 +12,7 @@ const name = core.getInput('name');
 
 (async () => {
   const packageJson = await getPackageJson();
-  const tsConfigPath = await getTsConfigPath();
+  const { hasTsConfig, tsConfigPath } = await ensureTsConfig();
 
   const args = [
     path.join(__dirname, 'node_modules/typedoc/bin/typedoc'),
@@ -30,6 +30,9 @@ const name = core.getInput('name');
 
   await exec('node', args);
   await fs.writeFile('docs/.nojekyll', '');
+  if (!hasTsConfig) {
+    await fs.unlink(tsConfigPath);
+  }
 })().catch((error) => {
   core.setFailed(error);
 });
@@ -38,10 +41,11 @@ async function getPackageJson() {
   return JSON.parse(await fs.readFile('package.json', 'utf-8'));
 }
 
-async function getTsConfigPath() {
-  if (exists('tsconfig.json')) {
-    return path.resolve('tsconfig.json');
-  } else {
-    return path.join(__dirname, 'tsconfig.json');
+async function ensureTsConfig() {
+  let has = true;
+  if (!exists('tsconfig.json')) {
+    has = false;
+    await fs.writeFile('tsconfig.json', '{}');
   }
+  return { hasTsConfig: has, tsConfigPath: path.resolve('tsconfig.json') };
 }
