@@ -26,10 +26,6 @@ const name = core.getInput('name');
     tsConfigPath,
   ];
 
-  if (entry.endsWith('.d.ts')) {
-    args.push('--includeDeclarations', '--excludeExternals');
-  }
-
   args.push(entry);
 
   await exec('node', args);
