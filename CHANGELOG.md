@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.0.2](https://www.github.com/zakodium/typedoc-action/compare/v2.0.1...v2.0.2) (2021-05-10)
+
+
+### Bug Fixes
+
+* install dependencies if node_modules is not present ([fa3d15e](https://www.github.com/zakodium/typedoc-action/commit/fa3d15e4262b749b7d7350594e3ff31d0fbb4bdc))
+
 ### [2.0.1](https://www.github.com/zakodium/typedoc-action/compare/v2.0.0...v2.0.1) (2021-04-30)
 
 
