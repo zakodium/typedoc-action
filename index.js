@@ -21,6 +21,11 @@ const defaultTsconfig = `{
   const packageJson = await getPackageJson();
   const { hasTsConfig, tsConfigPath } = await ensureTsConfig();
 
+  if (!exists('node_modules')) {
+    core.warning('node_modules is not present. Running `npm install`...');
+    await exec('npm', ['install']);
+  }
+
   const args = [
     path.join(__dirname, 'node_modules/typedoc/bin/typedoc'),
     '--out',
