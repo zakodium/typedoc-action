@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://www.github.com/zakodium/typedoc-action/compare/v2.0.2...v2.1.0) (2021-06-28)
+
+
+### Features
+
+* update TypeDoc to support TypeScript 4.3 ([d4b7ea6](https://www.github.com/zakodium/typedoc-action/commit/d4b7ea6ae777b9807c1f8af0f44bc8170b0f2e5d))
+
 ### [2.0.2](https://www.github.com/zakodium/typedoc-action/compare/v2.0.1...v2.0.2) (2021-05-10)
 
 
