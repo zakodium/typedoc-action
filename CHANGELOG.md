@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.1.1](https://www.github.com/zakodium/typedoc-action/compare/v2.1.0...v2.1.1) (2021-08-01)
+
+
+### Bug Fixes
+
+* update dependencies ([7597fb2](https://www.github.com/zakodium/typedoc-action/commit/7597fb2c659345eaa239d17c8cbe4ccb60eceacc))
+
 ## [2.1.0](https://www.github.com/zakodium/typedoc-action/compare/v2.0.2...v2.1.0) (2021-06-28)
 
 
