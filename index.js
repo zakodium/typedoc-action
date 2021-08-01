@@ -38,7 +38,7 @@ const defaultTsconfig = `{
     tsConfigPath,
   ];
 
-  args.push(entry);
+  args.push(...entry.split(/ +/));
 
   await exec('node', args);
   await fs.writeFile('docs/.nojekyll', '');
