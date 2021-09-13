@@ -14,10 +14,10 @@
   },
   "homepage": "https://github.com/zakodium/typedoc-action#readme",
   "dependencies": {
-    "@actions/core": "^1.4.0",
+    "@actions/core": "^1.5.0",
     "@actions/exec": "^1.1.0",
-    "typedoc": "^0.21.5",
-    "typescript": "~4.3.5"
+    "typedoc": "^0.22.3",
+    "typescript": "~4.4.3"
   },
   "prettier": {
     "arrowParens": "always",
@@ -27,6 +27,6 @@
     "trailingComma": "all"
   },
   "volta": {
-    "node": "12.22.1"
+    "node": "12.22.6"
   }
 }
