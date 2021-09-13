@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.3.1](https://www.github.com/zakodium/typedoc-action/compare/v2.3.0...v2.3.1) (2021-09-13)
+
+
+### Bug Fixes
+
+* install packages with a Unix system ([66e7cf2](https://www.github.com/zakodium/typedoc-action/commit/66e7cf2451be804868a914764cfc56fc815011c7))
+
 ## [2.3.0](https://www.github.com/zakodium/typedoc-action/compare/v2.2.0...v2.3.0) (2021-09-13)
 
 
