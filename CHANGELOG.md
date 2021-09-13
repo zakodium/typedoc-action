@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.0](https://www.github.com/zakodium/typedoc-action/compare/v2.2.0...v2.3.0) (2021-09-13)
+
+
+### Features
+
+* update typedoc to version 0.22 ([630ceb0](https://www.github.com/zakodium/typedoc-action/commit/630ceb007bd1d4f8cdbec277add9a4925b820745))
+
 ## [2.2.0](https://www.github.com/zakodium/typedoc-action/compare/v2.1.0...v2.2.0) (2021-08-01)
 
 
