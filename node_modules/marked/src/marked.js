@@ -235,10 +235,10 @@ marked.use = function(...args) {
     // ==-- Parse WalkTokens extensions --== //
     if (pack.walkTokens) {
       const walkTokens = marked.defaults.walkTokens;
-      opts.walkTokens = (token) => {
+      opts.walkTokens = function(token) {
         pack.walkTokens.call(this, token);
         if (walkTokens) {
-          walkTokens(token);
+          walkTokens.call(this, token);
         }
       };
     }
@@ -257,7 +257,7 @@ marked.use = function(...args) {
 
 marked.walkTokens = function(tokens, callback) {
   for (const token of tokens) {
-    callback(token);
+    callback.call(marked, token);
     switch (token.type) {
       case 'table': {
         for (const cell of token.header) {
@@ -323,20 +323,14 @@ marked.parseInline = function(src, opt) {
 /**
  * Expose
  */
-
 marked.Parser = Parser;
 marked.parser = Parser.parse;
-
 marked.Renderer = Renderer;
 marked.TextRenderer = TextRenderer;
-
 marked.Lexer = Lexer;
 marked.lexer = Lexer.lex;
-
 marked.Tokenizer = Tokenizer;
-
 marked.Slugger = Slugger;
-
 marked.parse = marked;
 
 module.exports = marked;
