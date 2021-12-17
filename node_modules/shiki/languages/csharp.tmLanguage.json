@@ -1,8 +1,12 @@
 {
+  "information_for_contributors": [
+    "This file has been converted from https://github.com/dotnet/csharp-tmLanguage/blob/master/grammars/csharp.tmLanguage",
+    "If you want to provide a fix or improvement, please create a pull request against the original repository.",
+    "Once accepted there, we are happy to receive an update request."
+  ],
+  "version": "https://github.com/dotnet/csharp-tmLanguage/commit/483d25bfa2b96474b55d2e9e4d1ca2acbd542034",
   "name": "csharp",
   "scopeName": "source.cs",
-  "fileTypes": ["cs"],
-  "uuid": "f7de61e2-bdde-4e2a-a139-8221b179584e",
   "patterns": [
     {
       "include": "#preprocessor"
@@ -526,7 +530,7 @@
           "name": "keyword.other.namespace.cs"
         }
       },
-      "end": "(?<=\\})",
+      "end": "(?<=\\})|(?=;)",
       "patterns": [
         {
           "include": "#comment"
@@ -3072,26 +3076,26 @@
           "include": "#tuple-literal-element"
         },
         {
+          "include": "#expression"
+        },
+        {
           "include": "#punctuation-comma"
         }
       ]
     },
     "tuple-literal-element": {
-      "begin": "(?x)\n(?:(@?[_[:alpha:]][_[:alnum:]]*)\\s*(:)\\s*)?\n(?![,)])",
+      "begin": "(?x)\n(@?[_[:alpha:]][_[:alnum:]]*)\\s*\n(?=:)",
       "beginCaptures": {
-        "0": {
-          "name": "entity.name.variable.tuple-element.cs"
-        },
         "1": {
-          "name": "punctuation.separator.colon.cs"
+          "name": "entity.name.variable.tuple-element.cs"
         }
       },
-      "end": "(?=[,)])",
-      "patterns": [
-        {
-          "include": "#expression"
+      "end": "(:)",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.separator.colon.cs"
         }
-      ]
+      }
     },
     "expression-operators": {
       "patterns": [
