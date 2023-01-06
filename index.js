@@ -30,7 +30,7 @@ const defaultTsconfig = `{
 
   // Check that the plugin is installed
   console.log(process.cwd());
-  const fileExists = fs.existsSync(
+  const fileExists = await fs.exists(
     path.join(process.cwd(), 'node_modules/typedoc-plugin-katex'),
   );
   console.log('fileExists', fileExists);
