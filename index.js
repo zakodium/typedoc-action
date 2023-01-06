@@ -1,6 +1,6 @@
 'use strict';
 
-const exists = require('fs').existsSync;
+const { existsSync, readdirSync } = require('fs');
 const fs = require('fs').promises;
 const path = require('path');
 
@@ -21,7 +21,7 @@ const defaultTsconfig = `{
   const packageJson = await getPackageJson();
   const { hasTsConfig, tsConfigPath } = await ensureTsConfig();
 
-  if (!exists('node_modules')) {
+  if (!existsSync('node_modules')) {
     core.warning('node_modules is not present. Running `npm install`...');
     await exec('npm', ['install']);
   }
@@ -30,7 +30,9 @@ const defaultTsconfig = `{
 
   // Check that the plugin is installed
   console.log(process.cwd());
-  const fileExists = exists(
+  console.log(readdirSync(process.cwd()));
+  console.log(readdirSync(`${process.cwd()}/node_modules`));
+  const fileExists = existsSync(
     path.join(process.cwd(), 'node_modules/typedoc-plugin-katex'),
   );
   console.log('fileExists', fileExists);
@@ -71,7 +73,7 @@ async function getPackageJson() {
 
 async function ensureTsConfig() {
   let has = true;
-  if (!exists('tsconfig.json')) {
+  if (!existsSync('tsconfig.json')) {
     has = false;
     await fs.writeFile('tsconfig.json', defaultTsconfig);
   }
