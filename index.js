@@ -28,6 +28,13 @@ const defaultTsconfig = `{
 
   await writeTypedocJson(name || packageJson.name, tsConfigPath);
 
+  // Check that the plugin is installed
+  console.log(process.cwd());
+  const fileExists = fs.existsSync(
+    path.join(process.cwd(), 'node_modules/typedoc-plugin-katex'),
+  );
+  console.log('fileExists', fileExists);
+
   const args = [path.join(__dirname, 'node_modules/typedoc/bin/typedoc')];
 
   await exec('node', args);
