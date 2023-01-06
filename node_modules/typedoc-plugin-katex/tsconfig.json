@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"moduleResolution": "Node",
+		"target": "ESNext",
+		"module": "CommonJS",
+		"strict": true,
+		"jsx": "react",
+		"jsxFactory": "JSX.createElement",
+		"jsxFragmentFactory": "JSX.Fragment",
+		"outDir": "dist"
+	},
+	"include": [
+		"src/*.ts",
+		"src/*.tsx",
+	]
+}

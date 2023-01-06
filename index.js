@@ -26,19 +26,9 @@ const defaultTsconfig = `{
     await exec('npm', ['install']);
   }
 
-  const args = [
-    path.join(__dirname, 'node_modules/typedoc/bin/typedoc'),
-    '--out',
-    'docs',
-    '--name',
-    name || packageJson.name,
-    '--excludePrivate',
-    '--hideGenerator',
-    '--tsconfig',
-    tsConfigPath,
-  ];
+  await writeTypedocJson(name || packageJson.name, tsConfigPath);
 
-  args.push(...entry.split(/ +/));
+  const args = [path.join(__dirname, 'node_modules/typedoc/bin/typedoc')];
 
   await exec('node', args);
   if (!hasTsConfig) {
@@ -47,6 +37,26 @@ const defaultTsconfig = `{
 })().catch((error) => {
   core.setFailed(error);
 });
+
+async function writeTypedocJson(name, tsConfigPath) {
+  const options = {
+    out: 'docs',
+    name,
+    excludePrivate: true,
+    hideGenerator: true,
+    tsconfig: tsConfigPath,
+    entryPoints: entry.split(/ +/),
+    // typedoc-plugin-katex plugin options
+    katex: {
+      options: {
+        delimiters: [{ left: '$', right: '$', display: true }],
+        fleqn: 'true',
+        leqno: 'false',
+      },
+    },
+  };
+  await fs.writeFile('typedoc.json', JSON.stringify(options, null, 2));
+}
 
 async function getPackageJson() {
   return JSON.parse(await fs.readFile('package.json', 'utf-8'));
