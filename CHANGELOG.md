@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.0](https://github.com/zakodium/typedoc-action/compare/v2.3.5...v2.4.0) (2023-01-07)
+
+
+### Features
+
+* use katex plugin to generate mathematical formulas from readme ([#13](https://github.com/zakodium/typedoc-action/issues/13)) ([f976aba](https://github.com/zakodium/typedoc-action/commit/f976aba5b3d7986cd896b4e7769cdd353de9afa3))
+
 ### [2.3.5](https://github.com/zakodium/typedoc-action/compare/v2.3.4...v2.3.5) (2022-03-12)
 
 
