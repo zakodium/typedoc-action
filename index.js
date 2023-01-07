@@ -1,6 +1,6 @@
 'use strict';
 
-const { existsSync, readdirSync } = require('fs');
+const { existsSync } = require('fs');
 const fs = require('fs').promises;
 const path = require('path');
 
@@ -28,15 +28,6 @@ const defaultTsconfig = `{
   }
 
   await writeTypedocJson(name || packageJson.name, tsConfigPath);
-  // Check that the plugin is installed
-  console.log(process.cwd());
-  console.log(__dirname);
-  console.log(readdirSync(process.cwd()));
-  console.log(readdirSync(`${process.cwd()}/node_modules`).join('\n'));
-  const fileExists = existsSync(
-    path.join(process.cwd(), 'node_modules/typedoc-plugin-katex'),
-  );
-  console.log('fileExists', fileExists);
 
   const args = [path.join(__dirname, 'node_modules/typedoc/bin/typedoc')];
 
