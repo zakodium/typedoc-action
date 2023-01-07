@@ -9,6 +9,7 @@ const { exec } = require('@actions/exec');
 
 const entry = core.getInput('entry') || 'src/index.ts';
 const name = core.getInput('name');
+const cwd = process.cwd();
 
 const defaultTsconfig = `{
   "compilerOptions": {
@@ -27,9 +28,9 @@ const defaultTsconfig = `{
   }
 
   await writeTypedocJson(name || packageJson.name, tsConfigPath);
-
   // Check that the plugin is installed
   console.log(process.cwd());
+  console.log(__dirname);
   console.log(readdirSync(process.cwd()));
   console.log(readdirSync(`${process.cwd()}/node_modules`).join('\n'));
   const fileExists = existsSync(
@@ -39,7 +40,9 @@ const defaultTsconfig = `{
 
   const args = [path.join(__dirname, 'node_modules/typedoc/bin/typedoc')];
 
-  await exec('node', args);
+  await exec('node', args, {
+    cwd: __dirname,
+  });
   if (!hasTsConfig) {
     await fs.unlink(tsConfigPath);
   }
@@ -49,12 +52,12 @@ const defaultTsconfig = `{
 
 async function writeTypedocJson(name, tsConfigPath) {
   const options = {
-    out: 'docs',
+    out: path.resolve('docs'),
     name,
     excludePrivate: true,
     hideGenerator: true,
-    tsconfig: tsConfigPath,
-    entryPoints: entry.split(/ +/),
+    tsconfig: path.resolve(tsConfigPath),
+    entryPoints: entry.split(/ +/).map((entry) => path.resolve(entry)),
     // typedoc-plugin-katex plugin options
     katex: {
       options: {
@@ -64,7 +67,10 @@ async function writeTypedocJson(name, tsConfigPath) {
       },
     },
   };
-  await fs.writeFile('typedoc.json', JSON.stringify(options, null, 2));
+  await fs.writeFile(
+    path.join(__dirname, 'typedoc.json'),
+    JSON.stringify(options, null, 2),
+  );
 }
 
 async function getPackageJson() {
