@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.3](https://github.com/zakodium/typedoc-action/compare/v2.4.2...v2.4.3) (2023-03-31)
+
+
+### Bug Fixes
+
+* recreate node_modules with Linux ([ad216fc](https://github.com/zakodium/typedoc-action/commit/ad216fc9a0b96b1152f33a2bc8a051ab92ad151f))
+
 ## [2.4.2](https://github.com/zakodium/typedoc-action/compare/v2.4.1...v2.4.2) (2023-03-31)
 
 
