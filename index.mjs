@@ -1,15 +1,13 @@
-'use strict';
+import { existsSync } from 'node:fs';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const { existsSync } = require('fs');
-const fs = require('fs').promises;
-const path = require('path');
-
-const core = require('@actions/core');
-const { exec } = require('@actions/exec');
+import core from '@actions/core';
+import { exec } from '@actions/exec';
 
 const entry = core.getInput('entry') || 'src/index.ts';
 const name = core.getInput('name');
-const cwd = process.cwd();
 
 const defaultTsconfig = `{
   "compilerOptions": {
@@ -18,8 +16,9 @@ const defaultTsconfig = `{
 }
 `;
 
-(async () => {
+try {
   const packageJson = await getPackageJson();
+  const tsVersion = getTsVersion(packageJson);
   const { hasTsConfig, tsConfigPath } = await ensureTsConfig();
 
   if (!existsSync('node_modules')) {
@@ -29,17 +28,24 @@ const defaultTsconfig = `{
 
   await writeTypedocJson(name || packageJson.name, tsConfigPath);
 
-  const args = [path.join(__dirname, 'node_modules/typedoc/bin/typedoc')];
+  if (tsVersion) {
+    // Install the same version of TypeScript as the project.
+    await exec('npm', ['install', `typescript@${tsVersion}`]);
+  }
+
+  const args = [
+    fileURLToPath(new URL('node_modules/typedoc/bin/typedoc', import.meta.url)),
+  ];
 
   await exec('node', args, {
-    cwd: __dirname,
+    cwd: fileURLToPath(new URL('.', import.meta.url)),
   });
   if (!hasTsConfig) {
     await fs.unlink(tsConfigPath);
   }
-})().catch((error) => {
+} catch (error) {
   core.setFailed(error);
-});
+}
 
 async function writeTypedocJson(name, tsConfigPath) {
   const options = {
@@ -59,7 +65,7 @@ async function writeTypedocJson(name, tsConfigPath) {
     },
   };
   await fs.writeFile(
-    path.join(__dirname, 'typedoc.json'),
+    new URL('typedoc.json', import.meta.url),
     JSON.stringify(options, null, 2),
   );
 }
@@ -75,4 +81,11 @@ async function ensureTsConfig() {
     await fs.writeFile('tsconfig.json', defaultTsconfig);
   }
   return { hasTsConfig: has, tsConfigPath: path.resolve('tsconfig.json') };
+}
+
+function getTsVersion(packageJson) {
+  const deps = packageJson.dependencies || {};
+  const devDeps = packageJson.devDependencies || {};
+  const tsVersion = deps.typescript || devDeps.typescript;
+  return tsVersion || null;
 }

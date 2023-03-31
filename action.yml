@@ -9,4 +9,4 @@ inputs:
     description: 'Name of the package'
 runs:
   using: 'node16'
-  main: 'index.js'
+  main: 'index.mjs'
