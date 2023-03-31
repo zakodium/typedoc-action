@@ -16,9 +16,9 @@
   "dependencies": {
     "@actions/core": "^1.10.0",
     "@actions/exec": "^1.1.1",
-    "typedoc": "^0.23.26",
+    "typedoc": "^0.23.28",
     "typedoc-plugin-katex": "^0.1.2",
-    "typescript": "~4.9.5"
+    "typescript": "~5.0.3"
   },
   "prettier": {
     "arrowParens": "always",
@@ -28,6 +28,6 @@
     "trailingComma": "all"
   },
   "volta": {
-    "node": "16.19.1"
+    "node": "16.20.0"
   }
 }
