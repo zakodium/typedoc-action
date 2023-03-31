@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.4.2](https://github.com/zakodium/typedoc-action/compare/v2.4.1...v2.4.2) (2023-03-31)
+
+
+### Bug Fixes
+
+* install the same TypeScript version as the project ([e1015ff](https://github.com/zakodium/typedoc-action/commit/e1015ff23a4d7572ae22a3526e8f0331d503595c))
+* update dependencies ([6d4d7e1](https://github.com/zakodium/typedoc-action/commit/6d4d7e12d7408b38653f6534febe3fb3854d4559))
+
 ## [2.4.1](https://github.com/zakodium/typedoc-action/compare/v2.4.0...v2.4.1) (2023-03-04)
 
 
