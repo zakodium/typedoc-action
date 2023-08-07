@@ -32,7 +32,8 @@
       }
     },
     {
-      "scope": "comment",
+      "name": "Comments",
+      "scope": ["comment", "string.quoted.docstring"],
       "settings": {
         "foreground": "#008000"
       }
@@ -538,7 +539,7 @@
       }
     },
     {
-      "scope": "constant.character",
+      "scope": ["constant.character", "constant.other.option"],
       "settings": {
         "foreground": "#0000ff"
       }

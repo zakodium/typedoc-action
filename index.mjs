@@ -48,6 +48,9 @@ try {
 }
 
 async function writeTypedocJson(name, tsConfigPath) {
+  /**
+   * @type {import('typedoc').TypeDocOptions}
+   */
   const options = {
     out: path.resolve('docs'),
     name,
@@ -55,6 +58,7 @@ async function writeTypedocJson(name, tsConfigPath) {
     hideGenerator: true,
     tsconfig: path.resolve(tsConfigPath),
     entryPoints: entry.split(/ +/).map((entry) => path.resolve(entry)),
+    plugin: ['typedoc-plugin-katex'],
     // typedoc-plugin-katex plugin options
     katex: {
       options: {

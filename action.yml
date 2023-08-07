@@ -1,4 +1,5 @@
 name: 'TypeDoc'
+author: 'Zakodium'
 description: 'Build documentation using TypeDoc'
 inputs:
   entry:
