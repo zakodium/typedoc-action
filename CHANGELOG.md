@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.6.0](https://github.com/zakodium/typedoc-action/compare/v2.5.0...v2.6.0) (2023-09-06)
+
+
+### Features
+
+* update deps and switch runtime to node20 ([#20](https://github.com/zakodium/typedoc-action/issues/20)) ([dbb561c](https://github.com/zakodium/typedoc-action/commit/dbb561c22614a90b06567360bd549f6e5e9352ab))
+
 ## [2.5.0](https://github.com/zakodium/typedoc-action/compare/v2.4.3...v2.5.0) (2023-08-07)
 
 
