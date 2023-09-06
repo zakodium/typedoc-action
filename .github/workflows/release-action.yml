@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  NODE_VERSION: 18.x
+  NODE_VERSION: 20.x
 
 jobs:
   release-please:
@@ -20,7 +20,7 @@ jobs:
           token: ${{ secrets.BOT_TOKEN }}
           release-type: node
           package-name: ${{ env.PACKAGE_NAME }}
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         # These if statements ensure that a publication only occurs when a new release is created
         if: ${{ steps.release.outputs.release_created }}
       - name: Tag major and patch versions
