@@ -6,6 +6,11 @@ inputs:
     description: 'Entry point of your API'
     required: true
     default: 'src/index.ts'
+  treatWarningsAsErrors:
+    description: 'Treat warnings as errors'
+    required: false
+    default: 'false'
+
   name:
     description: 'Name of the package'
 runs:

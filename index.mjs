@@ -8,6 +8,7 @@ import { exec } from '@actions/exec';
 
 const entry = core.getInput('entry') || 'src/index.ts';
 const name = core.getInput('name');
+const treatWarningsAsErrors = core.getInput('treatWarningsAsErrors');
 
 const defaultTsconfig = `{
   "compilerOptions": {
@@ -58,6 +59,7 @@ async function writeTypedocJson(name, tsConfigPath) {
     hideGenerator: true,
     tsconfig: path.resolve(tsConfigPath),
     entryPoints: entry.split(/ +/).map((entry) => path.resolve(entry)),
+    treatWarningsAsErrors: treatWarningsAsErrors === 'true',
     plugin: ['typedoc-plugin-katex'],
     // typedoc-plugin-katex plugin options
     katex: {
