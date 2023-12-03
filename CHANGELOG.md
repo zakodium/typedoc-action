@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.7.0](https://github.com/zakodium/typedoc-action/compare/v2.6.0...v2.7.0) (2023-12-03)
+
+
+### Features
+
+* add treatWarningsAsErrors option ([3c7d8ab](https://github.com/zakodium/typedoc-action/commit/3c7d8ab4981ba530a851abe9163a5ff9c1229039))
+
 ## [2.6.0](https://github.com/zakodium/typedoc-action/compare/v2.5.0...v2.6.0) (2023-09-06)
 
 
