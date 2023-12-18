@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.8.0](https://github.com/zakodium/typedoc-action/compare/v2.7.0...v2.8.0) (2023-12-18)
+
+
+### Features
+
+* update dependencies ([61ae70f](https://github.com/zakodium/typedoc-action/commit/61ae70f83534a6ccab4fdc1cff2dd7f433613599))
+
 ## [2.7.0](https://github.com/zakodium/typedoc-action/compare/v2.6.0...v2.7.0) (2023-12-03)
 
 
