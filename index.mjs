@@ -60,15 +60,6 @@ async function writeTypedocJson(name, tsConfigPath) {
     tsconfig: path.resolve(tsConfigPath),
     entryPoints: entry.split(/ +/).map((entry) => path.resolve(entry)),
     treatWarningsAsErrors: treatWarningsAsErrors === 'true',
-    plugin: ['typedoc-plugin-katex'],
-    // typedoc-plugin-katex plugin options
-    katex: {
-      options: {
-        delimiters: [{ left: '$', right: '$', display: true }],
-        fleqn: 'true',
-        leqno: 'false',
-      },
-    },
   };
   await fs.writeFile(
     new URL('typedoc.json', import.meta.url),
