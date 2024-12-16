@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.9.1](https://github.com/zakodium/typedoc-action/compare/v2.9.0...v2.9.1) (2024-12-16)
+
+
+### Bug Fixes
+
+* remove katex plugin ([af736a8](https://github.com/zakodium/typedoc-action/commit/af736a8d7bfc45df658cdb560d007b9262e19c45))
+
 ## [2.9.0](https://github.com/zakodium/typedoc-action/compare/v2.8.0...v2.9.0) (2024-12-16)
 
 
