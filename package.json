@@ -3,6 +3,7 @@
   "private": true,
   "version": "2.9.1",
   "description": "Build documentation using TypeDoc",
+  "type": "module",
   "main": "index.js",
   "repository": {
     "type": "git",
