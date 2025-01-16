@@ -14,4 +14,4 @@ inputs:
     description: 'Name of the package'
 runs:
   using: 'node20'
-  main: 'index.js'
+  main: 'action.js'
