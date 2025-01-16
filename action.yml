@@ -10,9 +10,8 @@ inputs:
     description: 'Treat warnings as errors'
     required: false
     default: 'false'
-
   name:
     description: 'Name of the package'
 runs:
   using: 'node20'
-  main: 'index.mjs'
+  main: 'index.js'
