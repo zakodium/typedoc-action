@@ -1,7 +1,7 @@
 {
   "name": "typedoc-action",
   "private": true,
-  "version": "2.9.2",
+  "version": "2.10.0",
   "description": "Build documentation using TypeDoc",
   "type": "module",
   "repository": {
