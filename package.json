@@ -27,6 +27,6 @@
     "trailingComma": "all"
   },
   "volta": {
-    "node": "22.16.0"
+    "node": "20.19.2"
   }
 }
