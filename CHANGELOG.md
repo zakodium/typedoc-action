@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.11.0](https://github.com/zakodium/typedoc-action/compare/v2.10.1...v2.11.0) (2025-08-12)
+
+
+### Features
+
+* update to Node.js 24 ([#32](https://github.com/zakodium/typedoc-action/issues/32)) ([86a85e2](https://github.com/zakodium/typedoc-action/commit/86a85e2d17bdf8ee2b487e728173f8e4167670f6))
+
 ## [2.10.1](https://github.com/zakodium/typedoc-action/compare/v2.10.0...v2.10.1) (2025-07-27)
 
 
