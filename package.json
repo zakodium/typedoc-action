@@ -16,8 +16,8 @@
   "dependencies": {
     "@actions/core": "^1.11.1",
     "@actions/exec": "^1.1.1",
-    "typedoc": "^0.28.7",
-    "typescript": "~5.8.3"
+    "typedoc": "^0.28.10",
+    "typescript": "~5.9.2"
   },
   "prettier": {
     "arrowParens": "always",
@@ -27,6 +27,6 @@
     "trailingComma": "all"
   },
   "volta": {
-    "node": "20.19.2"
+    "node": "24.5.0"
   }
 }
