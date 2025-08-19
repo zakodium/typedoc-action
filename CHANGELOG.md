@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.12.0](https://github.com/zakodium/typedoc-action/compare/v2.11.0...v2.12.0) (2025-08-19)
+
+
+### Features
+
+* extend typedoc with project custom config ([#34](https://github.com/zakodium/typedoc-action/issues/34)) ([4a1b736](https://github.com/zakodium/typedoc-action/commit/4a1b73643220d466988bc105d2a4dc43181faa3b))
+
 ## [2.11.0](https://github.com/zakodium/typedoc-action/compare/v2.10.1...v2.11.0) (2025-08-12)
 
 
