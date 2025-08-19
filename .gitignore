@@ -100,3 +100,15 @@ jspm_packages/
 
 # TernJS port file
 .tern-port
+
+# Actions need their deps.
+node_modules/.bin
+node_modules/.package-lock.json
+node_modules/**/*.md
+!node_modules/**/LICENSE.md
+node_modules/**/*.cts
+node_modules/**/*.mts
+node_modules/**/*.ts
+node_modules/**/*.map
+node_modules/**/docs/
+node_modules/prettier/

@@ -1,4 +1,4 @@
-import {existsSync, readFileSync, unlinkSync, writeFileSync} from 'node:fs';
+import { existsSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 
 const defaultTsconfig = `{
@@ -10,7 +10,13 @@ const defaultTsconfig = `{
 
 const actionDir = path.join(import.meta.dirname, '..');
 
-export async function executeAction({entry, name, treatWarningsAsErrors, onWarn, exec}) {
+export async function executeAction({
+  entry,
+  name,
+  treatWarningsAsErrors,
+  onWarn,
+  exec,
+}) {
   const packageJson = getPackageJson();
   const tsVersion = getTsVersion(packageJson);
   const { hasTsConfig, tsConfigPath } = ensureTsConfig();
@@ -20,7 +26,12 @@ export async function executeAction({entry, name, treatWarningsAsErrors, onWarn,
     await exec('npm', ['install']);
   }
 
-  writeTypedocJson(entry, name || packageJson.name, tsConfigPath, treatWarningsAsErrors);
+  writeTypedocJson(
+    entry,
+    name || packageJson.name,
+    tsConfigPath,
+    treatWarningsAsErrors,
+  );
 
   if (tsVersion) {
     // Install the same version of TypeScript as the project.
@@ -29,9 +40,7 @@ export async function executeAction({entry, name, treatWarningsAsErrors, onWarn,
     });
   }
 
-  const args = [
-    path.join(actionDir, 'node_modules/typedoc/bin/typedoc'),
-  ];
+  const args = [path.join(actionDir, 'node_modules/typedoc/bin/typedoc')];
 
   await exec('node', args, {
     cwd: actionDir,
@@ -42,6 +51,13 @@ export async function executeAction({entry, name, treatWarningsAsErrors, onWarn,
 }
 
 function writeTypedocJson(entry, name, tsConfigPath, treatWarningsAsErrors) {
+  let customTypedoc = '{}';
+  try {
+    customTypedoc = readFileSync(path.join(actionDir, 'typedoc.json'));
+    core.info('Custom typedoc.json loaded');
+  } catch {
+    core.info('No custom typedoc.json found');
+  }
   /**
    * @type {import('typedoc').TypeDocOptions}
    */
@@ -53,6 +69,7 @@ function writeTypedocJson(entry, name, tsConfigPath, treatWarningsAsErrors) {
     tsconfig: path.resolve(tsConfigPath),
     entryPoints: entry.split(/ +/).map((entry) => path.resolve(entry)),
     treatWarningsAsErrors,
+    ...JSON.parse(customTypedoc),
   };
   writeFileSync(
     path.join(actionDir, 'typedoc.json'),

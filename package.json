@@ -13,6 +13,10 @@
     "url": "https://github.com/zakodium/typedoc-action/issues"
   },
   "homepage": "https://github.com/zakodium/typedoc-action#readme",
+  "scripts": {
+    "prettier": "prettier --check ./",
+    "prettier-write": "prettier --write ./"
+  },
   "dependencies": {
     "@actions/core": "^1.11.1",
     "@actions/exec": "^1.1.1",
@@ -28,5 +32,8 @@
   },
   "volta": {
     "node": "24.5.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2"
   }
 }
