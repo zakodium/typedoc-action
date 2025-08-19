@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.12.2](https://github.com/zakodium/typedoc-action/compare/v2.12.1...v2.12.2) (2025-08-19)
+
+
+### Bug Fixes
+
+* add missing core imports ([#39](https://github.com/zakodium/typedoc-action/issues/39)) ([4229e7d](https://github.com/zakodium/typedoc-action/commit/4229e7d8611408c8715dbdb16e3acf09ce6d813b))
+
 ## [2.12.1](https://github.com/zakodium/typedoc-action/compare/v2.12.0...v2.12.1) (2025-08-19)
 
 
