@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.12.1](https://github.com/zakodium/typedoc-action/compare/v2.12.0...v2.12.1) (2025-08-19)
+
+
+### Bug Fixes
+
+* dummy commit for generating a new release ([#36](https://github.com/zakodium/typedoc-action/issues/36)) ([2cec784](https://github.com/zakodium/typedoc-action/commit/2cec7841eca2c4f8941796af9de3938a724fc6b5))
+
 ## [2.12.0](https://github.com/zakodium/typedoc-action/compare/v2.11.0...v2.12.0) (2025-08-19)
 
 
