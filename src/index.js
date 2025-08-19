@@ -1,3 +1,4 @@
+import core from '@actions/core';
 import { existsSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 

@@ -1,3 +1,4 @@
+import core from '@actions/core';
 import { execFileSync } from 'node:child_process';
 
 import { executeAction } from './src/index.js';
