@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.12.3](https://github.com/zakodium/typedoc-action/compare/v2.12.2...v2.12.3) (2025-08-19)
+
+
+### Bug Fixes
+
+* get typedoc.json from the right directory ([#41](https://github.com/zakodium/typedoc-action/issues/41)) ([a9129cb](https://github.com/zakodium/typedoc-action/commit/a9129cb4445ec164ca9349c0321ebed0723738dc))
+
 ## [2.12.2](https://github.com/zakodium/typedoc-action/compare/v2.12.1...v2.12.2) (2025-08-19)
 
 
