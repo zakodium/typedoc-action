@@ -53,10 +53,10 @@ export async function executeAction({
 
 function writeTypedocJson(entry, name, tsConfigPath, treatWarningsAsErrors) {
   let customTypedoc = '{}';
-  try {
-    customTypedoc = readFileSync(path.join(actionDir, 'typedoc.json'));
+  if (existsSync('typedoc.json')) {
+    customTypedoc = readFileSync('typedoc.json', 'utf-8');
     core.info('Custom typedoc.json loaded');
-  } catch {
+  } else {
     core.info('No custom typedoc.json found');
   }
   /**
