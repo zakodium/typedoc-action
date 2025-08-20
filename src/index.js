@@ -19,39 +19,24 @@ export async function executeAction({
   exec,
 }) {
   const packageJson = getPackageJson();
-  const tsVersion = getTsVersion(packageJson);
-  const { hasTsConfig, tsConfigPath } = ensureTsConfig();
+  const { hasTsConfig } = ensureTsConfig();
 
   if (!existsSync('node_modules')) {
     onWarn('node_modules is not present. Running `npm install`...');
     await exec('npm', ['install']);
   }
 
-  writeTypedocJson(
-    entry,
-    name || packageJson.name,
-    tsConfigPath,
-    treatWarningsAsErrors,
-  );
-
-  if (tsVersion) {
-    // Install the same version of TypeScript as the project.
-    await exec('npm', ['install', `typescript@${tsVersion}`], {
-      cwd: actionDir,
-    });
-  }
+  writeTypedocJson(entry, name || packageJson.name, treatWarningsAsErrors);
 
   const args = [path.join(actionDir, 'node_modules/typedoc/bin/typedoc')];
 
-  await exec('node', args, {
-    cwd: actionDir,
-  });
+  await exec('node', args);
   if (!hasTsConfig) {
     unlinkSync(tsConfigPath);
   }
 }
 
-function writeTypedocJson(entry, name, tsConfigPath, treatWarningsAsErrors) {
+function writeTypedocJson(entry, name, treatWarningsAsErrors) {
   let customTypedoc = '{}';
   if (existsSync('typedoc.json')) {
     customTypedoc = readFileSync('typedoc.json', 'utf-8');
@@ -63,19 +48,15 @@ function writeTypedocJson(entry, name, tsConfigPath, treatWarningsAsErrors) {
    * @type {import('typedoc').TypeDocOptions}
    */
   const options = {
-    out: path.resolve('docs'),
+    out: 'docs',
     name,
     excludePrivate: true,
     hideGenerator: true,
-    tsconfig: path.resolve(tsConfigPath),
-    entryPoints: entry.split(/ +/).map((entry) => path.resolve(entry)),
+    entryPoints: entry.split(/ +/),
     treatWarningsAsErrors,
     ...JSON.parse(customTypedoc),
   };
-  writeFileSync(
-    path.join(actionDir, 'typedoc.json'),
-    JSON.stringify(options, null, 2),
-  );
+  writeFileSync('typedoc.json', JSON.stringify(options, null, 2));
 }
 
 function getPackageJson() {
@@ -88,12 +69,5 @@ function ensureTsConfig() {
     has = false;
     writeFileSync('tsconfig.json', defaultTsconfig);
   }
-  return { hasTsConfig: has, tsConfigPath: path.resolve('tsconfig.json') };
-}
-
-function getTsVersion(packageJson) {
-  const deps = packageJson.dependencies || {};
-  const devDeps = packageJson.devDependencies || {};
-  const tsVersion = deps.typescript || devDeps.typescript;
-  return tsVersion || null;
+  return { hasTsConfig: has };
 }
