@@ -109,6 +109,7 @@ node_modules/**/*.md
 node_modules/**/*.cts
 node_modules/**/*.mts
 node_modules/**/*.ts
+!node_modules/typescript/lib/*.d.ts
 node_modules/**/*.map
 node_modules/**/docs/
 node_modules/prettier/
