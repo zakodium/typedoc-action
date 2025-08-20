@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.12.4](https://github.com/zakodium/typedoc-action/compare/v2.12.3...v2.12.4) (2025-08-20)
+
+
+### Bug Fixes
+
+* make entry input optional ([72809db](https://github.com/zakodium/typedoc-action/commit/72809db275f856f32d977535121e53609002b0ab))
+* run typedoc from project's folder instead of action ([f388c7d](https://github.com/zakodium/typedoc-action/commit/f388c7dbe9fa8674c527ad84cb36ea3ea8258681))
+
 ## [2.12.3](https://github.com/zakodium/typedoc-action/compare/v2.12.2...v2.12.3) (2025-08-19)
 
 
