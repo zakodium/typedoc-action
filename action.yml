@@ -4,7 +4,7 @@ description: 'Build documentation using TypeDoc'
 inputs:
   entry:
     description: 'Entry point of your API'
-    required: true
+    required: false
     default: 'src/index.ts'
   treatWarningsAsErrors:
     description: 'Treat warnings as errors'
