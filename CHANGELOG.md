@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.12.5](https://github.com/zakodium/typedoc-action/compare/v2.12.4...v2.12.5) (2025-08-20)
+
+
+### Bug Fixes
+
+* publish TypeScript lib files with the action ([cd41939](https://github.com/zakodium/typedoc-action/commit/cd4193945994140e9b53fdf227442f64c4bd0203))
+
 ## [2.12.4](https://github.com/zakodium/typedoc-action/compare/v2.12.3...v2.12.4) (2025-08-20)
 
 
