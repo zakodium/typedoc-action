@@ -1,4 +1,4 @@
-import core from '@actions/core';
+import * as core from '@actions/core';
 import { exec } from '@actions/exec';
 
 import { executeAction } from './src/index.js';
