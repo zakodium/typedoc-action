@@ -18,9 +18,9 @@
     "prettier-write": "prettier --write ./"
   },
   "dependencies": {
-    "@actions/core": "^3.0.0",
+    "@actions/core": "^3.0.1",
     "@actions/exec": "^3.0.0",
-    "typedoc": "^0.28.17",
+    "typedoc": "^0.28.19",
     "typescript": "~5.9.3"
   },
   "prettier": {
@@ -31,9 +31,9 @@
     "trailingComma": "all"
   },
   "volta": {
-    "node": "24.5.0"
+    "node": "24.15.0"
   },
   "devDependencies": {
-    "prettier": "^3.8.1"
+    "prettier": "^3.8.3"
   }
 }
