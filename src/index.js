@@ -1,5 +1,5 @@
 import * as core from '@actions/core';
-import { existsSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 
 const defaultTsconfig = `{
@@ -19,7 +19,7 @@ export async function executeAction({
   exec,
 }) {
   const packageJson = getPackageJson();
-  const { hasTsConfig } = ensureTsConfig();
+  ensureTsConfig();
 
   if (!existsSync('node_modules')) {
     onWarn('node_modules is not present. Running `npm install`...');
@@ -31,9 +31,6 @@ export async function executeAction({
   const args = [path.join(actionDir, 'node_modules/typedoc/bin/typedoc')];
 
   await exec('node', args);
-  if (!hasTsConfig) {
-    unlinkSync(tsConfigPath);
-  }
 }
 
 function writeTypedocJson(entry, name, treatWarningsAsErrors) {
@@ -64,10 +61,8 @@ function getPackageJson() {
 }
 
 function ensureTsConfig() {
-  let has = true;
   if (!existsSync('tsconfig.json')) {
-    has = false;
+    core.info('No tsconfig found, using a basic default');
     writeFileSync('tsconfig.json', defaultTsconfig);
   }
-  return { hasTsConfig: has };
 }
