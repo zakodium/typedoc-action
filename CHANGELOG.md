@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.13.2](https://github.com/zakodium/typedoc-action/compare/v2.13.1...v2.13.2) (2026-06-23)
+
+
+### Bug Fixes
+
+* do not try to delete inexistent variable ([a01e5d9](https://github.com/zakodium/typedoc-action/commit/a01e5d996732846f449cc285c3151c2890fe1b63))
+
 ## [2.13.1](https://github.com/zakodium/typedoc-action/compare/v2.13.0...v2.13.1) (2026-05-04)
 
 
